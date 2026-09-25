@@ -245,7 +245,7 @@ public class AVPlayer {
             mediaPlayer.seekTo(Int64(time.seconds * 1000.0))
         }
         // Other non-numeric times (indefinite/invalid/negativeInfinity) have no numeric position;
-        // ignore them rather than seek to a garbage offset, matching AVPlayer's no-op for such seeks.
+        // ignore them rather than seek to a garbage offset (AVFoundation rejects such seeks with an exception).
     }
 
     public func seek(to time: CMTime, completionHandler: @escaping (Bool) -> Void) {
